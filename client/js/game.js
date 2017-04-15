@@ -20,7 +20,10 @@ Game.create = function() {
   Game.heartBeat();
   Game.pulse = setInterval(Game.heartBeat, 10);
 
+  //Create multiple holes
   Game.holes.push(Game.hole.create(375, 375, 'hole'));
+  
+
   Game.holes.forEach( (hole) => {
   	hole.animations.add('explode');
     hole.anchor.y = 0.5;
@@ -84,10 +87,6 @@ Game.displayPlayer = function(player) {
 	Game.text[id] = game.add.text(760, textHeight, displayText, {font: '18px Arial', fill: '#000000' });
 }
 
-
-Game.drawGame = function(players) {
-
-}
 
 
 Game.over = function(players) {
