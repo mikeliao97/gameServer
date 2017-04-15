@@ -29,3 +29,21 @@ services:
       NODE_ENV: production
     ports:
       - 3003:3005
+  gameserver4:
+    image: gameserver:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3004:3005
+  gameserver6:
+    image: gameserver:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3006:3005
