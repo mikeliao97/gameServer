@@ -39,7 +39,7 @@ module.exports = function(io) {
     });
 
     socket.on('playerReady', function() {
-  
+      console.log('player ready')
       socket.player.ready = true;
       var allPlayers = getAllPlayers();
       io.emit('renderInfo', allPlayers);
@@ -47,6 +47,7 @@ module.exports = function(io) {
     });
 
     socket.on('disconnect', function() {
+      console.log('disonnected!');
       io.emit('renderInfo', getAllPlayers());
     });
   });

@@ -11,12 +11,13 @@ var lobbyState = {
     Client.joinLobby();
 
   
-    var rkey = game.input.keyboard.addKey(Phaser.Keyboard.R);
-    rkey.onDown.addOnce(this.ready, this);
+    var skey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    skey.onDown.addOnce(this.ready, this);
 
   },
 
   ready: function() {
+    console.log('client is ready');
     Client.ready();
   },
 
@@ -27,7 +28,7 @@ var lobbyState = {
     welcomeLabel.anchor.set(0.5);
 
     var startLabel = game.add.text(game.world.width/2, game.world.height - 20,
-      "press the 'R' key when you're ready", 
+      "press the 'S' key when you're ready", 
       {font: '35px Arial', fill: '#000000' });
     startLabel.anchor.set(0.5)
   },
@@ -35,6 +36,7 @@ var lobbyState = {
   renderServerInfo: function(players) {
 
     if (this.allReady(players)) {
+      console.log('game should start');
       game.state.start('Game');
     }
 
@@ -66,9 +68,12 @@ var lobbyState = {
   },
 
   allReady: function(players) {
-    return players.reduce((acc, curr) => {
+    
+    const ready = players.reduce((acc, curr) => {
      return acc && curr.ready
     }, true)
+    console.log('all players ready', ready);
+    return ready;
   }
 
 

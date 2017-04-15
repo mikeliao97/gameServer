@@ -10,6 +10,7 @@ Game.init = function() {
 };
 
 Game.create = function() {
+  console.log('creating game');
   Game.add.sprite(0, 0, 'background');
   Client.askNewPlayer();
   Game.cursor = {x: 450, y: 300};
@@ -91,6 +92,7 @@ Game.displayPlayer = function(player) {
 
 Game.over = function(players) {
   //pass the players object to results to display
+  console.log('game over');
   game.state.start('Results', true, false, players);
   removeAllSocketListenersGame();
 }

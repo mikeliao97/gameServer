@@ -3,6 +3,8 @@ Client.socket = io.connect();
 
 var setGameEventHandlers = function() {
   Client.socket.on('newPlayer', function(player) {
+
+    console.log('adding new player in client');
     Game.addNewPlayer(player);
   });
 
@@ -61,6 +63,8 @@ var removeAllSocketListenersGame = function() {
   Client.socket.removeAllListeners('death');
   Client.socket.removeAllListeners('remove');
   Client.socket.removeAllListeners('gameOver');
+  Client.socket.removeAllListeners('heartBeat');
+  
 }
 
 
