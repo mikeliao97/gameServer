@@ -10,10 +10,10 @@ var lobbyState = {
     //Client.joinLobby(client.username);
     Client.joinLobby();
 
-  
+    //skey for desktop
     var skey = game.input.keyboard.addKey(Phaser.Keyboard.S);
     skey.onDown.addOnce(this.ready, this);
-
+    
   },
 
   ready: function() {
@@ -57,10 +57,15 @@ var lobbyState = {
           var playerReady = game.add.button(playerName.x + playerName.width, playerNameHeight, 'playerReady');
         } else { //add the not ready symbol
           var playerNotReady = game.add.sprite(playerName.x + playerName.width, playerNameHeight, 'playerNotReady');
-
+          
+          //scale the playernot ready button
           playerNotReady.scale.set(0.5);
           playerNotReady.animations.add('toggle', [0, 1, 2, 3], 12, true);
           playerNotReady.play('toggle');
+
+          //mobile can't press s, key, add a click event for ready
+          playerNotReady.inputEnabled = true;
+          playerNotReady.events.onInputDown.addOnce(this.ready, this);
 
         }
         playerNameHeight += 150;

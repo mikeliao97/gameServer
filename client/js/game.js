@@ -15,6 +15,9 @@ Game.create = function() {
   Client.askNewPlayer();
   Game.cursor = {x: 450, y: 300};
   Game.Player = game.add.group();
+
+  
+
   Game.bound = game.add.group();
   Game.hole = game.add.group();
 
@@ -56,6 +59,9 @@ Game.updatePlayerPosition = function(player) {
 Game.addNewPlayer = function(player) {
   Game.Players[player.id] = Game.Player.create(player.x, player.y, 'character');
   var player = Game.Players[player.id];
+  game.physics.p2.enable(player);
+  game.camera.follow(player);
+  
   player.anchor.x = 0.5;
   player.anchor.y = 0.5;
 };

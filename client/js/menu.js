@@ -14,7 +14,6 @@ var menuState = {
     var button = game.add.button(200, 150, 'joinAsSpectatorButton', this.joinAsSpectator, this, 2, 1, 0);
 
     // skey.onDown.addOnce(this.start, this);
-    console.log('wilit repeat??');
   },
 
   joinAsPlayer: function() {
