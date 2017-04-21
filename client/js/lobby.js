@@ -22,8 +22,10 @@ var lobbyState = {
   },
 
   addStartLabels: function() {
+    var location = document.location.pathname
     var welcomeLabel = game.add.text(game.world.width /2, 30, 
-    "Welcome to Game Server 1", 
+
+    `Welcome to ${location.substring(1, location.length -1)}`, 
       {font: '35px Arial', fill: '#000000' });
     welcomeLabel.anchor.set(0.5);
 

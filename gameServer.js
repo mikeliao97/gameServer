@@ -21,10 +21,12 @@ app.use('*/css', express.static(path.join(__dirname + '/client/css')));
 var counter = 0;
 app.get('*', function(req, res) {
   var requestUrl = url.parse(req.url);
-  //my god this is terrible code
-  //this if statement just checks if the requestUrl.path == something like '/GameServer1/'
+  var regex = /gameServer\d\/$/
+  //This regex checks if the request Url is in the form of /GameServer2/
   console.log('requestUrl', requestUrl);
-  if (requestUrl.path.length === 13 && counter === 0) { 
+  var matched = requestUrl.path.search(regex);
+  console.log('matched', matched);
+  if (matched !== -1 && counter === 0) { 
     console.log('DOING STIFFFFFFFFFF');
     var pathName = requestUrl.path + 'socket.io/'
 
