@@ -10,12 +10,13 @@ var interactions = require('./server/interactions.js');
 
 var socketManager = require('./server/socket.js')(io);
 
-app.use('/sockets', express.static(__dirname + '/client/sockets'));
-app.use('/js', express.static(__dirname + '/client/js'));
-app.use('/assets', express.static(path.join(__dirname + '/client/assets')));
-app.use('/css', express.static(path.join(__dirname + '/client/css')));
+app.use('*/sockets', express.static(__dirname + '/client/sockets'));
+app.use('*/js', express.static(__dirname + '/client/js'));
+app.use('*/assets', express.static(path.join(__dirname + '/client/assets')));
+app.use('*/css', express.static(path.join(__dirname + '/client/css')));
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
+  console.log('request', req.url);
   res.sendFile(__dirname + '/client/index.html');
 });
 

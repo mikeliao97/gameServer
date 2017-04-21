@@ -1,5 +1,21 @@
+
+var gameServerUrls = {
+  'gameServer1': '/gameServer1',
+  'gameServer2': '/gameServer2',
+  'gameServer3': '/gameServer3',
+}
+var pathname = document.location.pathname
+window.alert(pathname);
+
 var Client = {};
-Client.socket = io.connect();
+if (pathname !== '/') {
+   Client.socket = io.connect('https://pearljam.pro', {path: pathname});
+} else {
+  Client.socket = io.connect();
+}
+
+
+
 
 var setGameEventHandlers = function() {
   Client.socket.on('newPlayer', function(player) {
