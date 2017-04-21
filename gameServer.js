@@ -18,18 +18,19 @@ app.use('*/js', express.static(__dirname + '/client/js'));
 app.use('*/assets', express.static(path.join(__dirname + '/client/assets')));
 app.use('*/css', express.static(path.join(__dirname + '/client/css')));
 
-
-
+var counter = 0;
 app.get('*', function(req, res) {
   var requestUrl = url.parse(req.url);
   //my god this is terrible code
   //this if statement just checks if the requestUrl.path == something like '/GameServer1/'
-  if (requestUrl.path.length === 13) { 
-    
+  console.log('requestUrl', requestUrl);
+  if (requestUrl.path.length === 13 && counter === 0) { 
+    console.log('DOING STIFFFFFFFFFF');
     var pathName = requestUrl.path + 'socket.io/'
-    
+
     var io = require('socket.io')(server, {path: pathName});
     var socketManager = require('./server/socket.js')(io);
+    counter++;
   } 
 
 

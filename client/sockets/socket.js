@@ -6,11 +6,11 @@ var gameServerUrls = {
 }
 
 var pathname = document.location.pathname
-window.alert(pathname);
 
 var Client = {};
 if (pathname !== '/') {
-   console.log('origin', document.location.origin);
+   alert(`origin ${document.location.origin}`);
+   alert(`extra, ${pathname + 'socket.io'}`);
    Client.socket = io.connect(document.location.origin, {path: pathname + 'socket.io'});
 } else {
   Client.socket = io.connect();

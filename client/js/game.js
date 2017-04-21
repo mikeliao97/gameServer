@@ -59,8 +59,6 @@ Game.updatePlayerPosition = function(player) {
 Game.addNewPlayer = function(player) {
   Game.Players[player.id] = Game.Player.create(player.x, player.y, 'character');
   var player = Game.Players[player.id];
-  game.physics.p2.enable(player);
-  game.camera.follow(player);
   
   player.anchor.x = 0.5;
   player.anchor.y = 0.5;
