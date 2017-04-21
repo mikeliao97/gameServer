@@ -4,12 +4,14 @@ var gameServerUrls = {
   'gameServer2': '/gameServer2',
   'gameServer3': '/gameServer3',
 }
+
 var pathname = document.location.pathname
 window.alert(pathname);
 
 var Client = {};
 if (pathname !== '/') {
-   Client.socket = io.connect('https://pearljam.pro', {path: pathname});
+   console.log('origin', document.location.origin);
+   Client.socket = io.connect(document.location.origin, {path: pathname + 'socket.io'});
 } else {
   Client.socket = io.connect();
 }
